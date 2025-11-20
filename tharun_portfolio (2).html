@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chenchu Tharun — Portfolio</title>
+  <meta name="description" content="Chenchu Tharun — Aspiring MERN Stack Developer. Projects, skills and contact." />
+
+  <!-- Google Fonts (linked) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724; /* dark navy */
+      --card: #0b1220;
+      --muted: #98a0b3;
+      --accent: linear-gradient(90deg,#06b6d4,#7c3aed);
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-glow: rgba(124,58,237,0.08);
+      --radius: 14px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent), radial-gradient(900px 400px at 90% 90%, rgba(6,182,212,0.06), transparent), var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:32px;
+    }
+
+    /* layout */
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:var(--glass);display:grid;place-items:center;border:1px solid var(--glass-border);box-shadow:0 6px 20px var(--glass-glow)}
+    .logo span{font-weight:800;color:#fff}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{background:var(--glass-2);color:#fff}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-bottom:34px}
+    .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius);border:1px solid var(--glass-border);backdrop-filter:blur(6px)}
+    .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:700;margin-bottom:12px}
+    .intro h2{font-size:28px;margin:6px 0}
+    .intro h3{font-size:18px;margin:6px 0;color:var(--muted);font-weight:600}
+    .bio{margin-top:14px;color:var(--muted)}
+    .cta{margin-top:18px;display:flex;gap:12px}
+    .btn{
+      padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;background:transparent;color:#fff;outline:none
+    }
+    .btn-primary{background:var(--accent);background-clip:padding-box;border:1px solid rgba(255,255,255,0.06);box-shadow:0 8px 30px rgba(124,58,237,0.12)}
+    .btn-ghost{background:transparent;border:1px solid var(--glass-border);color:var(--muted)}
+
+    /* profile card */
+    .profile{padding:20px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border)}
+    .avatar{width:80px;height:80px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+    .contact{margin-top:12px;color:var(--muted);font-size:14px}
+    .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .skill{padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:8px;font-weight:600;font-size:13px}
+
+    /* projects */
+    .section{margin-bottom:36px}
+    .section h3{font-size:20px;margin-bottom:16px}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid var(--glass-border);transition:transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .card h4{margin:0 0 8px 0}
+    .card p{color:var(--muted);font-size:14px}
+    .tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px}
+
+    /* animated underline for headings */
+    .underline{position:relative;display:inline-block}
+    .underline::after{content:'';position:absolute;left:0;bottom:-6px;height:4px;width:0;background:linear-gradient(90deg,#06b6d4,#7c3aed);border-radius:3px;transition:width .5s ease}
+    .underline:hover::after{width:100%}
+
+    /* contact */
+    .contact-card{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px;border-radius:12px;border:1px solid var(--glass-border)}
+    .field{display:flex;flex-direction:column;gap:6px}
+    input,textarea{background:transparent;border:1px solid var(--glass-border);padding:10px;border-radius:8px;color:#e6eef8}
+    textarea{min-height:120px}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* footer */
+    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .profile{order:2}
+    }
+
+    /* small animations */
+    .fade-up{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .fade-up.visible{opacity:1;transform:none}
+    .float{animation:floaty 6s ease-in-out infinite}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>CT</span></div>
+        <div>
+          <h1>Chenchu Tharun</h1>
+          <p>Aspiring MERN Stack Developer</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="intro fade-up">
+          <div class="eyebrow">Full‑Stack • MERN</div>
+          <h2>Hi, I'm <strong>Chenchu Tharun</strong></h2>
+          <h3>Frontend & Full‑Stack Developer — React • Node • MongoDB</h3>
+          <p class="bio">Aspiring MERN Stack Developer with hands-on experience building responsive web applications using MongoDB, Express.js, React.js, and Node.js. I build clean UI, reusable components, and REST APIs.</p>
+
+          <div class="cta">
+            <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="profile fade-up float">
+          <div style="display:flex;gap:12px;align-items:center">
+            <img src="assets/images/tharun.jpg" alt="Profile Photo" style="width:80px;height:80px;border-radius:12px;object-fit:cover;"/>
+            <div>
+              <strong>Chenchu Tharun</strong>
+              <div class="contact">Tirupati • +91 8328365704</div>
+              <div class="contact">tharunchenchu@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">MongoDB</div>
+          </div>
+
+          <div style="margin-top:12px;color:var(--muted);font-size:13px">Experience: SmartBridge (Intern), Novitech R&D (Intern)</div>
+        </aside>
+      </section>
+
+      <section id="projects" class="section">
+        <h3 class="underline">Projects</h3>
+        <p class="muted">A few highlights — built with MERN and modern frontend tools.</p>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- Project 1: ShopSmart -->
+          <article class="card fade-up">
+            <h4>ShopSmart — MERN E‑commerce App</h4>
+            <p>Full‑stack e‑commerce application with product listing, filters, search, cart, and order management. Implemented secure authentication using JWT and bcrypt. REST APIs built with Node & Express and MongoDB via Mongoose.</p>
+            <div class="tags">
+              <span class="tag">MERN</span>
+              <span class="tag">Auth (JWT)</span>
+              <span class="tag">Payments</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject('shopsmart')">View Details</button>
+              <button class="btn" onclick="copyText('ShopSmart — MERN E‑commerce App')">Copy Title</button>
+            </div>
+          </article>
+
+          <!-- Project 2: Portfolio Website -->
+          <article class="card fade-up">
+            <h4>Portfolio Website — React.js</h4>
+            <p>Personal portfolio built with React, featuring project sections, smooth navigation, responsive UI, dynamic routing and animations.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Animations</span>
+              <span class="tag">Responsive</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject('portfolio')">Live Demo</button>
+              <button class="btn" onclick="copyText('Portfolio Website — React.js')">Copy Title</button>
+            </div>
+          </article>
+
+          <!-- Example placeholder projects (encourage adding more) -->
+          <article class="card fade-up">
+            <h4>Weather App (Example)</h4>
+            <p>Real‑time weather app using a public API and JavaScript to fetch and display current conditions.</p>
+            <div class="tags"><span class="tag">API</span><span class="tag">JS</span></div>
+          </article>
+
+          <article class="card fade-up">
+            <h4>To‑Do App (Example)</h4>
+            <p>Task manager using localStorage and vanilla JavaScript for DOM updates and persistence.</p>
+            <div class="tags"><span class="tag">Vanilla JS</span><span class="tag">UX</span></div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <h3 class="underline">About Me</h3>
+        <p class="muted">B.Tech in Data Science (2022–2026) • Annamacharya Institute of Technology and Sciences — CGPA: 7.4</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px">
+          <div class="card fade-up">
+            <h4>Summary</h4>
+            <p>I build scalable full‑stack applications and reusable frontend components. Strong foundation in JavaScript, REST APIs, and modern frontend development. Passionate about solving problems and shipping production-ready code.</p>
+          </div>
+
+          <div class="card fade-up">
+            <h4>Experience</h4>
+            <p><strong>Full Stack Developer Intern — SmartBridge (2 Months)</strong><br>Worked on authentication, CRUD operations, and API development in an agile environment.</p>
+            <p style="margin-top:8px"><strong>Full Stack Intern — Novitech R&D Pvt Ltd (1 Month)</strong><br>Contributed to real-time MERN applications and backend integration.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <h3 class="underline">Contact</h3>
+        <p class="muted">Send a quick message or copy my email.</p>
+
+        <div class="contact-card fade-up">
+          <div>
+            <div class="field">
+              <label class="muted">Name</label>
+              <input id="name" placeholder="Your name" />
+            </div>
+
+            <div class="field" style="margin-top:10px">
+              <label class="muted">Email</label>
+              <input id="email" placeholder="Your email" />
+            </div>
+
+            <div class="field" style="margin-top:10px">
+              <label class="muted">Message</label>
+              <textarea id="message" placeholder="Hello Tharun..."></textarea>
+            </div>
+
+            <div style="margin-top:12px">
+              <button class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+              <button class="btn btn-ghost" onclick="copyText('tharunchenchu@gmail.com')">Copy Email</button>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+            <div>
+              <strong>Email</strong>
+              <div class="muted">tharunchenchu@gmail.com</div>
+            </div>
+            <div>
+              <strong>Location</strong>
+              <div class="muted">Tirupati, India</div>
+            </div>
+            <div>
+              <strong>Phone</strong>
+              <div class="muted">+91 8328365704</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© 2025 Chenchu Tharun — Aspiring MERN Stack Developer</div>
+    </footer>
+  </div>
+
+  <script>
+    // Reveal on scroll
+    const observers = document.querySelectorAll('.fade-up');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    },{threshold:0.15});
+    observers.forEach(o => obs.observe(o));
+
+    // copy helper
+    function copyText(text){
+      navigator.clipboard?.writeText(text).then(()=>{
+        alert('Copied: ' + text);
+      }).catch(()=>{alert('Copy failed — select text manually.')});
+    }
+
+    // placeholder project open
+    function openProject(id){
+      alert('Project details or live/demo link not set yet. You can replace this function to link to GitHub or live URL. (id: '+id+')');
+    }
+
+    // fake send message
+    function sendMessage(){
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const message=document.getElementById('message').value.trim();
+      if(!name||!email||!message){
+        alert('Please fill all fields.');
+        return;
+      }
+      // This is a client-side demo. Replace with real form handler (Netlify, Formspree, server) when ready.
+      alert('Thanks '+name+"! Message sent (demo). I'll contact you at " + email);
+      document.getElementById('name').value='';document.getElementById('email').value='';document.getElementById('message').value='';
+    }
+  </script>
+</body>
+</html>
